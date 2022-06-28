@@ -1,0 +1,30 @@
+@import "../assets/scss/utils";
+
+@keyframes waving {
+    from {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(0.5rem);
+    }
+
+    50% {
+        transform: translateX(-0.5rem);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+.app-loading {
+    p {
+        color: $color-blue;
+        animation: waving 2s linear infinite;
+        
+        img {
+            height: 5rem;
+        }
+    }
+}

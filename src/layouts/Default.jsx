@@ -1,13 +1,42 @@
+import { createContext, useEffect, useState } from 'react'
+
+import Header from './Header'
 import Homepage from '../pages/Homepage'
 
+import './Default.scss'
+import Post from '../pages/Post'
+import Navigation from './Navigation'
+
+export const TitleContext = createContext()
+
 const LayoutDefault = ({ component }) => {
+  const [title, setTitle] = useState(null)
+
+  useEffect(() => {
+    switch (component) {
+      case 'home':
+        setTitle('Bienvenue chez 3Si !')
+        break
+      case 'blog':
+        setTitle('Le Blog de 3Si')
+        break
+      default:
+        break
+    }
+  }, [component])
+
   return (
     <>
-      <header className='app-header'>Header</header>
+      <TitleContext.Provider value={title}>
+        <Header />
+      </TitleContext.Provider>
 
-      <nav className='app-navigation'>Nav</nav>
+      <Navigation />
 
-      <main className='app-main'>{component === 'home' && <Homepage />}</main>
+      <main className='app-main'>
+        {component === 'home' && <Homepage />}
+        {component === 'blog' && <Post />}
+      </main>
     </>
   )
 }
