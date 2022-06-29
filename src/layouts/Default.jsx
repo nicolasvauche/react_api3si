@@ -5,6 +5,7 @@ import Homepage from '../pages/Homepage'
 
 import './Default.scss'
 import Post from '../pages/Post'
+import User from '../pages/User'
 import Navigation from './Navigation'
 
 export const TitleContext = createContext()
@@ -13,6 +14,9 @@ const LayoutDefault = ({ component }) => {
   const [title, setTitle] = useState(null)
 
   useEffect(() => {
+    // Dev mode only
+    console.clear()
+
     switch (component) {
       case 'home':
         setTitle('Bienvenue chez 3Si !')
@@ -20,6 +24,9 @@ const LayoutDefault = ({ component }) => {
       case 'blog':
         setTitle('Le Blog de 3Si')
         break
+        case 'user':
+          setTitle('Les utilisateurs')
+          break
       default:
         break
     }
@@ -36,6 +43,7 @@ const LayoutDefault = ({ component }) => {
       <main className='app-main'>
         {component === 'home' && <Homepage />}
         {component === 'blog' && <Post />}
+        {component === 'user' && <User />}
       </main>
     </>
   )

@@ -6,8 +6,9 @@ function App () {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path='/' element={<Layout component='home' />} />
-        <Route path='/blog' element={<Layout component='blog' />} />
+        <Route index element={<Layout component='home' />} />
+        <Route path='blog' element={<Layout component='blog' />} />
+        <Route path='utilisateurs' element={<Layout component='user' />} />
       </Routes>
     </BrowserRouter>
   )

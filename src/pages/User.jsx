@@ -3,12 +3,12 @@ import axios from 'axios'
 
 import Loading from '../components/Loading'
 
-const Post = () => {
+const User = () => {
   const [loading, setLoading] = useState(true)
   const [message, setMessage] = useState('')
   
   useEffect(() => {
-    const url = 'http://localhost:8080/api/posts'
+    const url = 'http://localhost:8080/api/users'
 
     axios
       .get(url)
@@ -43,4 +43,4 @@ const Post = () => {
   )
 }
 
-export default Post
+export default User

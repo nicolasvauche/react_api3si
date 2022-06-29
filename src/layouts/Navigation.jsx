@@ -12,6 +12,10 @@ return (
         <NavLink to='/blog'>
             Blog
         </NavLink>
+
+        <NavLink to='/utilisateurs'>
+            Users
+        </NavLink>
     </nav>
 )
 }
