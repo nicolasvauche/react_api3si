@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 import Loading from '../components/Loading'
 
 const Post = () => {
+  const navigate = useNavigate()
   const [loading, setLoading] = useState(true)
   const [message, setMessage] = useState('')
   
@@ -27,10 +29,11 @@ const Post = () => {
             setMessage(error.response.message)
             break
         }
+        navigate('/connexion')
       })
 
     setLoading(false)
-  }, [])
+  }, [navigate])
 
   return (
     <>

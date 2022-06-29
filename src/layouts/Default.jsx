@@ -4,6 +4,7 @@ import Header from './Header'
 import Homepage from '../pages/Homepage'
 
 import './Default.scss'
+import Login from '../pages/Login'
 import Post from '../pages/Post'
 import User from '../pages/User'
 import Navigation from './Navigation'
@@ -21,6 +22,9 @@ const LayoutDefault = ({ component }) => {
       case 'home':
         setTitle('Bienvenue chez 3Si !')
         break
+        case 'login':
+          setTitle('Connectez-vous')
+          break
       case 'blog':
         setTitle('Le Blog de 3Si')
         break
@@ -42,6 +46,7 @@ const LayoutDefault = ({ component }) => {
 
       <main className='app-main'>
         {component === 'home' && <Homepage />}
+        {component === 'login' && <Login />}
         {component === 'blog' && <Post />}
         {component === 'user' && <User />}
       </main>
