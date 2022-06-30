@@ -1,13 +1,14 @@
 import { createContext, useEffect, useState } from 'react'
 
 import Header from './Header'
-import Homepage from '../pages/Homepage'
+import Navigation from './Navigation'
 
-import './Default.scss'
+import Homepage from '../pages/Homepage'
 import Login from '../pages/Login'
 import Post from '../pages/Post'
 import User from '../pages/User'
-import Navigation from './Navigation'
+
+import './Default.scss'
 
 export const TitleContext = createContext()
 
@@ -22,15 +23,15 @@ const LayoutDefault = ({ component }) => {
       case 'home':
         setTitle('Bienvenue chez 3Si !')
         break
-        case 'login':
-          setTitle('Connectez-vous')
-          break
+      case 'login':
+        setTitle('Connectez-vous')
+        break
       case 'blog':
         setTitle('Le Blog de 3Si')
         break
-        case 'user':
-          setTitle('Les utilisateurs')
-          break
+      case 'user':
+        setTitle('Les utilisateurs')
+        break
       default:
         break
     }

@@ -3,19 +3,26 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 import Loading from '../components/Loading'
+import GridUser from '../components/user/Grid'
 
 const User = () => {
   const navigate = useNavigate()
   const [loading, setLoading] = useState(true)
+  const [items, setItems] = useState([])
   const [message, setMessage] = useState('')
-  
+  const token = localStorage.getItem('token')
+
   useEffect(() => {
     const url = 'http://localhost:8080/api/users'
 
     axios
-      .get(url)
+      .get(url, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
       .then(({ data: response }) => {
-        setMessage(response.message)
+        setItems(response['hydra:member'])
       })
       .catch(error => {
         switch (error.response.status) {
@@ -33,14 +40,20 @@ const User = () => {
       })
 
     setLoading(false)
-  }, [navigate])
+  }, [navigate, token])
 
   return (
     <>
       <section>
-       {loading && <Loading />}
+        {loading && <Loading />}
 
-        {!loading && <h2>{message}</h2>}
+        {!loading && (
+          <>
+            <h2>{message}</h2>
+
+            <GridUser items={items} />
+          </>
+        )}
       </section>
     </>
   )
